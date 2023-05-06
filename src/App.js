@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 
+const options = {
+  results : 10,
+  page: 1,
+  seed: 'pd2023'
+};
+
+function loadWithFetch({results, seed, page}){
+  fetch(`https://randomuser.me/api/?results=${results}&seed=${seed}&page=${page}`)
+    .then((response) => response.json())
+    .then(({results}) => console.dir(results))
+    .catch((error) => console.error(error));
+}
+
 function App() {
+  loadWithFetch(options);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h2>Load data</h2>
+    </>
   );
 }
 
