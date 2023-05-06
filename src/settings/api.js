@@ -1,6 +1,7 @@
 import axios from 'axios';
+import queryString from 'query-string';
 
-const options = {
+const defaultOptions = {
     results : 10,
     page: 1,
     seed: 'pd2023'
@@ -23,20 +24,19 @@ export function loadTestData(){
     return users;
 }
   
-export function loadWithFetch({results, seed, page}){
-    fetch(`https://randomuser.me/api/?results=${results}&seed=${seed}&page=${page}`)
-      .then((response) => {
-        if(!response.ok) throw new Error(response.statusText);
-        return response.json();
-      })
-      .then((data) => {console.dir(data.results)})
-      .catch((error) => console.error(error));
+export function loadWithFetch(options){
+    const opt = {...defaultOptions, ...options};
+    const params = queryString.stringify(opt, {arrayFormat: 'comma'});
+    return fetch(`https://randomuser.me/api/?${params}`)
+      .then((response) => response.json());
   }
   
 export function loadWithAxios({results, seed, page}){
    axios.get(`https://randomuser.me/api/?results=${results}&seed=${seed}&page=${page}`, configAxios)
-      .then((response) => {console.log('AXIOS', response); console.dir(response.data.results)})
-      .catch((error) => console.error(error.message));
+      .then((response) => response.data)
+      .then((data) => {return data.results})
+      .catch((error) => console.log(error.message));
   }
 
-export default {loadWithAxios, loadWithFetch}
+export default {loadTestData, loadWithFetch, loadWithAxios};
+
