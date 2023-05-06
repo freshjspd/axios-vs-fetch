@@ -1,6 +1,17 @@
 import './App.css';
 import axios from 'axios';
 
+/*
+FETCH vs AXIOS
+-------------------
+fetch - native, axios - npm
+fetch+axios : http requests - get,post,put, delete
+fetch - status.ok, statusText, axios - config
+Response. fetch -  response.json(), axios - -
+DATA. fetch - response.json().results, axios - response.data.results
+
+*/
+
 const options = {
   results : 10,
   page: 1,
