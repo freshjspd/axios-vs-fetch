@@ -1,10 +1,12 @@
 import axios from 'axios';
 import queryString from 'query-string';
+import config from './config.js';
 
 const defaultOptions = {
     results : 10,
     page: 1,
-    seed: 'pd2023'
+    seed: config.KEY,
+    inc: config.INC,
   };
   
 const configAxios = {
@@ -27,7 +29,7 @@ export function loadTestData(){
 export function loadWithFetch(options){
     const opt = {...defaultOptions, ...options};
     const params = queryString.stringify(opt);  //(opt, {arrayFormat: 'comma'})
-    return fetch(`https://randomuser.me/api/?${params}`)
+    return fetch(`${config.BASE_URL}?${params}`)
       .then((response) => response.json());
   }
   
