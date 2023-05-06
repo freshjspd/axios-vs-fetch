@@ -26,16 +26,16 @@ export function loadTestData(){
   
 export function loadWithFetch(options){
     const opt = {...defaultOptions, ...options};
-    const params = queryString.stringify(opt, {arrayFormat: 'comma'});
+    const params = queryString.stringify(opt);  //(opt, {arrayFormat: 'comma'})
     return fetch(`https://randomuser.me/api/?${params}`)
       .then((response) => response.json());
   }
   
-export function loadWithAxios({results, seed, page}){
-   axios.get(`https://randomuser.me/api/?results=${results}&seed=${seed}&page=${page}`, configAxios)
-      .then((response) => response.data)
-      .then((data) => {return data.results})
-      .catch((error) => console.log(error.message));
+export function loadWithAxios(options){
+    const opt = {...defaultOptions, ...options};
+    const params = queryString.stringify(opt);
+    return axios.get(`https://randomuser.me/api/?${params}`, configAxios)
+      .then((response) => response.data.results)
   }
 
 export default {loadTestData, loadWithFetch, loadWithAxios};

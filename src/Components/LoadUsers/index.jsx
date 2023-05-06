@@ -16,8 +16,9 @@ export default function LoadUsers(props) {
 
   useEffect(()=>{
         setIsLoading(true);
-        (api.loadWithFetch({page: currentPage})).then(data => setUsers(data.results))
-        console.log(users);
+        //(api.loadWithFetch({page: currentPage})).then(data => setUsers(data.results))
+        (api.loadWithAxios({page: currentPage})).then(data => setUsers(data))
+        //console.log(users);
         setIsLoading(false);
   },[currentPage])
 
