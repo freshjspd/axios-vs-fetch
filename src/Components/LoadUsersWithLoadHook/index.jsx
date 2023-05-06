@@ -12,9 +12,6 @@ export default function LoadUsersWithLoadHook(props) {
     setCurrentPage(currentPage +1);
   }
 
-  useEffect(()=>{},[currentPage])
-  
-
   return (
     <>
         {isError && <p>Error load</p>}
