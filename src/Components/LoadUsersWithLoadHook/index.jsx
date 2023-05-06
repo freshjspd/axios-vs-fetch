@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import useDataLoad from '../../hooks/useDataLoad';
+import api from '../../settings/api';
 
 export default function LoadUsersWithLoadHook(props) {
   const [currentPage, setCurrentPage] = useState(1);
-  const {data, isLoading, isError} = useDataLoad(currentPage);
+  const {data, isLoading, isError} = useDataLoad(api.loadWithAxios, currentPage);
 
   const prevPage = () => {
     if(currentPage > 1) setCurrentPage(currentPage -1);
