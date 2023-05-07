@@ -1,0 +1,36 @@
+.card{
+    width: 300px;
+    height: 330px;
+    border-radius: 10px;
+    border: 2px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #ccc;
+}    
+
+.imgContainer{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: 2px solid gray;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.imgContainer > img{
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+} 
+
+.card h2{
+    color: darkblue;
+    margin-top: 10px;
+}
+
+.card h5{
+    margin: 0;
+}

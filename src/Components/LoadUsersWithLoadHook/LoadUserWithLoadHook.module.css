@@ -1,0 +1,18 @@
+.container{
+    width: 90%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.contrl{
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    flex-direction: row;
+    height: 30px;
+}

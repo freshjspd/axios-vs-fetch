@@ -26,17 +26,17 @@ export function loadTestData(){
     return users;
 }
   
-export function loadWithFetch(options){
+export async function loadWithFetch(options){
     const opt = {...defaultOptions, ...options};
     const params = queryString.stringify(opt);  //(opt, {arrayFormat: 'comma'})
-    return fetch(`${config.BASE_URL}?${params}`)
+    return await fetch(`${config.BASE_URL}?${params}`)
       .then((response) => response.json());
   }
   
-export function loadWithAxios(options){
+export async function loadWithAxios(options){
     const opt = {...defaultOptions, ...options};
     const params = queryString.stringify(opt);
-    return axios.get(`https://randomuser.me/api/?${params}`, configAxios)
+    return await axios.get(`https://randomuser.me/api/?${params}`, configAxios)
       .then((response) => response.data.results)
   }
 
